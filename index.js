@@ -59,7 +59,7 @@ for(let func in control) {
             });
 
             r.callback            = 'success';
-            r.contextWrites['to'] = response == '' ? {'message': 'Success'} : response;
+            r.contextWrites['to'] = response;
         } catch(e) {
             r.callback            = 'error';
             r.contextWrites['to'] = e.status_code ? e : { status_code: "API_ERROR", status_msg:  e.message ? e.message : e };
