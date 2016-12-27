@@ -1,0 +1,269 @@
+{
+  "package": "Fencer",
+  "tagline": "Fencer API Package",
+  "description": "Provide new context to location aware applications and IoT devices.",
+  "image": "https://c32fb470f18bbef5a28f-a32cc6f5b299b29c34282696634d695c.ssl.cf3.rackcdn.com/img/logo-v2-white.png",
+  "keywords": [
+    "API"
+  ],
+  "repo": "https://github.com/RapidSoftwareSolutions/Marketplace-Fencer-Package",
+  "accounts": {
+    "domain": "",
+    "credentials": [
+      "apiKey",
+      "accessKey"
+    ]
+  },
+  "blocks": [
+    {
+      "name": "getGeofences",
+      "description": "Obtain information about public and private geofences associated with an API key.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Your Fencer API key.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "getSingleGeofence",
+      "description": "Obtain information about a geofence. You can query a public or private geofence of your own, or any public geofence.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Your Fencer API key.",
+          "required": true
+        },
+        {
+          "name": "accessKey",
+          "type": "String",
+          "info": "Fencer Geofences Access Key.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "navigationIn",
+      "description": "Check a position and obtain bearing and distance of shortest route into a geofence. You can query a public or private geofence of your own, or any public geofence.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Your Fencer API key.",
+          "required": true
+        },
+        {
+          "name": "accessKey",
+          "type": "String",
+          "info": "Fencer Geofences Access Key.",
+          "required": true
+        },
+        {
+          "name": "latitude",
+          "type": "String",
+          "info": "Latitude coordinate",
+          "required": true
+        },
+        {
+          "name": "longitude",
+          "type": "String",
+          "info": "Longitude coordinate",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "navigationOrigin",
+      "description": "Check a position and obtain bearing and distance (km) of shortest route to origin/center of geofence. You can query a public or private geofence of your own, or any public geofence.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Your Fencer API key.",
+          "required": true
+        },
+        {
+          "name": "accessKey",
+          "type": "String",
+          "info": "Fencer Geofences Access Key.",
+          "required": true
+        },
+        {
+          "name": "latitude",
+          "type": "String",
+          "info": "Latitude coordinate",
+          "required": true
+        },
+        {
+          "name": "longitude",
+          "type": "String",
+          "info": "Longitude coordinate",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "navigationOut",
+      "description": "Check a position and obtain bearing and distance (km) of shortest route out of a geofence. You can query a public or private geofence of your own, or any public geofence.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Your Fencer API key.",
+          "required": true
+        },
+        {
+          "name": "accessKey",
+          "type": "String",
+          "info": "Fencer Geofences Access Key.",
+          "required": true
+        },
+        {
+          "name": "latitude",
+          "type": "String",
+          "info": "Latitude coordinate",
+          "required": true
+        },
+        {
+          "name": "longitude",
+          "type": "String",
+          "info": "Longitude coordinate",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "positionInside",
+      "description": "Check a position to ascertain if inside or outside of a geofence. You can query a public or private geofence of your own, or any public geofence.Returns true if coordinates sit inside the geofence, false if not.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Your Fencer API key.",
+          "required": true
+        },
+        {
+          "name": "accessKey",
+          "type": "String",
+          "info": "Fencer Geofences Access Key.",
+          "required": true
+        },
+        {
+          "name": "latitude",
+          "type": "String",
+          "info": "Latitude coordinate",
+          "required": true
+        },
+        {
+          "name": "longitude",
+          "type": "String",
+          "info": "Longitude coordinate",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "positionStatus",
+      "description": "Check a position against a geofence. Returns returns informationa about whether inside or outside a geofence and routes to enter or exit and origin. ",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Your Fencer API key.",
+          "required": true
+        },
+        {
+          "name": "accessKey",
+          "type": "String",
+          "info": "Fencer Geofences Access Key.",
+          "required": true
+        },
+        {
+          "name": "latitude",
+          "type": "String",
+          "info": "Latitude coordinate",
+          "required": true
+        },
+        {
+          "name": "longitude",
+          "type": "String",
+          "info": "Longitude coordinate",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    }
+  ]
+}

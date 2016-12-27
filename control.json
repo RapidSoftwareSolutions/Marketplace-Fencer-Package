@@ -1,0 +1,67 @@
+{
+    "getGeofences": {
+        "url": "https://api.fencer.io/v1.0/geofence",
+        "method": "GET",
+        "args": {
+            "credentials|apiKey": "$apiKey"
+        }
+    },
+    "getSingleGeofence": {
+        "url": "https://api.fencer.io/v1.0/geofence/:accessKey",
+        "method": "GET",
+        "args": {
+            "credentials|apiKey": "$apiKey",
+            "String|accessKey": "$accessKey"
+        }
+    },
+    "navigationIn": {
+        "url": "https://api.fencer.io/v1.0/navigation/in/:accessKey",
+        "method": "GET",
+        "args": {
+            "credentials|apiKey": "$apiKey",
+            "String|accessKey": "$accessKey",
+            "String|latitude": "$latitude",
+            "String|longitude": "$longitude"
+        }
+    },
+    "navigationOrigin": {
+        "url": "https://api.fencer.io/v1.0/navigation/origin/:accessKey",
+        "method": "GET",
+        "args": {
+            "credentials|apiKey": "$apiKey",
+            "String|accessKey": "$accessKey",
+            "String|latitude": "$latitude",
+            "String|longitude": "$longitude"
+        }
+    },
+    "navigationOut": {
+        "url": "https://api.fencer.io/v1.0/navigation/out/:accessKey",
+        "method": "GET",
+        "args": {
+            "credentials|apiKey": "$apiKey",
+            "String|accessKey": "$accessKey",
+            "String|latitude": "$latitude",
+            "String|longitude": "$longitude"
+        }
+    },
+    "positionInside": {
+        "url": "https://api.fencer.io/v1.0/position/inside/:accessKey",
+        "method": "GET",
+        "args": {
+            "credentials|apiKey": "$apiKey",
+            "String|accessKey": "$accessKey",
+            "String|latitude": "$latitude",
+            "String|longitude": "$longitude"
+        }
+    },
+    "positionStatus": {
+        "url": "https://api.fencer.io/v1.0/position/status/:accessKey",
+        "method": "GET",
+        "args": {
+            "credentials|apiKey": "$apiKey",
+            "String|accessKey": "$accessKey",
+            "String|latitude": "$latitude",
+            "String|longitude": "$longitude"
+        }
+    }
+}
