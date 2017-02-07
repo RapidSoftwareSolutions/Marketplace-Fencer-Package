@@ -1,3 +1,5 @@
+[![](https://scdn.rapidapi.com/RapidAPI_banner.png)](https://rapidapi.com/package/Fencer/functions?utm_source=RapidAPIGitHub_FencerFunctions&utm_medium=button&utm_content=RapidAPI_GitHub)
+
 # Fencer Package
 Provide new context to location aware applications and IoT devices.
 * Domain: 
