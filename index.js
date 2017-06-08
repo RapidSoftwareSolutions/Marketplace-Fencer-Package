@@ -29,59 +29,104 @@ for(let func in control) {
         url
     } = control[func];
 
-    app.post(`/api/${PACKAGE_NAME}/${func}`, _(function* (req, res) {
-        let response;
-        let opts = {};
-        let r    = {
-            callback     : "",
-            contextWrites: {}
-        };
+    if (func == 'getGeofences' || func == 'getSingleGeofence') {
+        app.post(`/api/${PACKAGE_NAME}/${func}`, _(function*(req, res) {
+            let response;
+            let opts = {};
+            let r = {
+                callback: "",
+                contextWrites: {}
+            };
 
-        req.body.args = lib.clearArgs(req.body.args);
+            req.body.args = lib.clearArgs(req.body.args);
 
-        let params = {
-            'Authorization': req.body.args['apiKey'],
-            'Access-Key':    req.body.args['accessKey']
-        };
+            let params = {
+                'Authorization': req.body.args['apiKey'],
+                'Access-Key': req.body.args['accessKey']
+            };
 
-        if (req.body.args.hasOwnProperty('coordinates') && req.body.args['coordinates']) {
-            let coordinates = req.body.args.coordinates.replace(/\s+/g, '').split(',');
-            params['Lat-Pos'] = coordinates[0];
-            params['Lng-Pos'] = coordinates[1];
-        }
-        else if (req.body.args.hasOwnProperty('latitude') && req.body.args['latitude'] && req.body.args.hasOwnProperty('latitude') && req.body.args['latitude']) {
-            params['Lat-Pos'] = req.body.args['latitude'];
-            params['Lng-Pos'] = req.body.args['longitude'];
-        }
-        else {
-            r.callback            = 'error';
-            r.contextWrites['to'] = {status_code: 'REQUIRED_FIELDS', status_msg: 'Please, check and fill in required fields: coordinates OR (latitude AND longitude)'};
-            res.status(200).send(r);
-        }
+            let headers = lib.clearArgs(params);
 
-        let headers = lib.clearArgs(params);
+            try {
+                for (let arg in args) {
+                    let argarr = arg.split('|');
+                    opts[args[arg] + '|' + argarr[0]] = req.body.args[argarr[1]];
+                }
 
-        try {
-            for(let arg in args) {
-                let argarr      = arg.split('|');
-                opts[args[arg] + '|' + argarr[0]] = req.body.args[argarr[1]];
+                response = yield new API(url, {headers}).request({
+                    method,
+                    query: opts,
+                    parseUri: true
+                });
+
+                r.callback = 'success';
+                r.contextWrites['to'] = response;
+            } catch (e) {
+                r.callback = 'error';
+                r.contextWrites['to'] = e.status_code ? e : {status_code: "API_ERROR", status_msg: e.message ? e.message : e};
             }
 
-            response = yield new API(url, {headers}).request({
-                method, 
-                query: opts,
-                parseUri: true
-            });
+            res.status(200).send(r);
+        }))
+    }
+    else {
+        app.post(`/api/${PACKAGE_NAME}/${func}`, _(function*(req, res) {
+            let response;
+            let opts = {};
+            let r = {
+                callback: "",
+                contextWrites: {}
+            };
 
-            r.callback            = 'success';
-            r.contextWrites['to'] = response;
-        } catch(e) {
-            r.callback            = 'error';
-            r.contextWrites['to'] = e.status_code ? e : { status_code: "API_ERROR", status_msg:  e.message ? e.message : e };
-        }
+            req.body.args = lib.clearArgs(req.body.args);
 
-        res.status(200).send(r);
-    }))
+            let params = {
+                'Authorization': req.body.args['apiKey'],
+                'Access-Key': req.body.args['accessKey']
+            };
+
+            if (req.body.args.hasOwnProperty('coordinates') && req.body.args['coordinates']) {
+                let coordinates = req.body.args.coordinates.replace(/\s+/g, '').split(',');
+                params['Lat-Pos'] = coordinates[0];
+                params['Lng-Pos'] = coordinates[1];
+            }
+            else if (req.body.args.hasOwnProperty('latitude') && req.body.args['latitude'] && req.body.args.hasOwnProperty('latitude') && req.body.args['latitude']) {
+                params['Lat-Pos'] = req.body.args['latitude'];
+                params['Lng-Pos'] = req.body.args['longitude'];
+            }
+            else {
+                r.callback = 'error';
+                r.contextWrites['to'] = {
+                    status_code: 'REQUIRED_FIELDS',
+                    status_msg: 'Please, check and fill in required fields: coordinates OR (latitude AND longitude)'
+                };
+                res.status(200).send(r);
+            }
+
+            let headers = lib.clearArgs(params);
+
+            try {
+                for (let arg in args) {
+                    let argarr = arg.split('|');
+                    opts[args[arg] + '|' + argarr[0]] = req.body.args[argarr[1]];
+                }
+
+                response = yield new API(url, {headers}).request({
+                    method,
+                    query: opts,
+                    parseUri: true
+                });
+
+                r.callback = 'success';
+                r.contextWrites['to'] = response;
+            } catch (e) {
+                r.callback = 'error';
+                r.contextWrites['to'] = e.status_code ? e : {status_code: "API_ERROR", status_msg: e.message ? e.message : e};
+            }
+
+            res.status(200).send(r);
+        }))
+    }
 }
 
 app.listen(PORT);
