@@ -19,9 +19,7 @@
         "method": "GET",
         "args": {
             "credentials|apiKey": "$apiKey",
-            "String|accessKey": "$accessKey",
-            "String|latitude": "$latitude",
-            "String|longitude": "$longitude"
+            "String|accessKey": "$accessKey"
         }
     },
     "navigationOrigin": {
@@ -29,9 +27,7 @@
         "method": "GET",
         "args": {
             "credentials|apiKey": "$apiKey",
-            "String|accessKey": "$accessKey",
-            "String|latitude": "$latitude",
-            "String|longitude": "$longitude"
+            "String|accessKey": "$accessKey"
         }
     },
     "navigationOut": {
@@ -39,9 +35,7 @@
         "method": "GET",
         "args": {
             "credentials|apiKey": "$apiKey",
-            "String|accessKey": "$accessKey",
-            "String|latitude": "$latitude",
-            "String|longitude": "$longitude"
+            "String|accessKey": "$accessKey"
         }
     },
     "positionInside": {
@@ -49,9 +43,7 @@
         "method": "GET",
         "args": {
             "credentials|apiKey": "$apiKey",
-            "String|accessKey": "$accessKey",
-            "String|latitude": "$latitude",
-            "String|longitude": "$longitude"
+            "String|accessKey": "$accessKey"
         }
     },
     "positionStatus": {
@@ -59,9 +51,7 @@
         "method": "GET",
         "args": {
             "credentials|apiKey": "$apiKey",
-            "String|accessKey": "$accessKey",
-            "String|latitude": "$latitude",
-            "String|longitude": "$longitude"
+            "String|accessKey": "$accessKey"
         }
     }
 }

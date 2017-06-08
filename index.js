@@ -39,12 +39,27 @@ for(let func in control) {
 
         req.body.args = lib.clearArgs(req.body.args);
 
-        let headers = lib.clearArgs({
+        let params = {
             'Authorization': req.body.args['apiKey'],
-            'Access-Key':    req.body.args['accessKey'],
-            'Lat-Pos':       req.body.args['latitude'],
-            'Lng-Pos':       req.body.args['longitude'],
-        });
+            'Access-Key':    req.body.args['accessKey']
+        };
+
+        if (req.body.args.hasOwnProperty('coordinates') && req.body.args['coordinates']) {
+            let coordinates = req.body.args.coordinates.replace(/\s+/g, '').split(',');
+            params['Lat-Pos'] = coordinates[0];
+            params['Lng-Pos'] = coordinates[1];
+        }
+        else if (req.body.args.hasOwnProperty('latitude') && req.body.args['latitude'] && req.body.args.hasOwnProperty('latitude') && req.body.args['latitude']) {
+            params['Lat-Pos'] = req.body.args['latitude'];
+            params['Lng-Pos'] = req.body.args['longitude'];
+        }
+        else {
+            r.callback            = 'error';
+            r.contextWrites['to'] = {status_code: 'REQUIRED_FIELDS', status_msg: 'Please, check and fill in required fields: coordinates OR (latitude AND longitude)'};
+            res.status(200).send(r);
+        }
+
+        let headers = lib.clearArgs(params);
 
         try {
             for(let arg in args) {

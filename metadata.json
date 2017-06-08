@@ -82,16 +82,10 @@
           "required": true
         },
         {
-          "name": "latitude",
-          "type": "String",
-          "info": "Latitude coordinate",
-          "required": true
-        },
-        {
-          "name": "longitude",
-          "type": "String",
-          "info": "Longitude coordinate",
-          "required": true
+          "name": "coordinates",
+          "type": "Map",
+          "info": "Coordinates",
+          "required": false
         }
       ],
       "callbacks": [
@@ -122,16 +116,10 @@
           "required": true
         },
         {
-          "name": "latitude",
-          "type": "String",
-          "info": "Latitude coordinate",
-          "required": true
-        },
-        {
-          "name": "longitude",
-          "type": "String",
-          "info": "Longitude coordinate",
-          "required": true
+          "name": "coordinates",
+          "type": "Map",
+          "info": "Coordinates",
+          "required": false
         }
       ],
       "callbacks": [
@@ -162,16 +150,10 @@
           "required": true
         },
         {
-          "name": "latitude",
-          "type": "String",
-          "info": "Latitude coordinate",
-          "required": true
-        },
-        {
-          "name": "longitude",
-          "type": "String",
-          "info": "Longitude coordinate",
-          "required": true
+          "name": "coordinates",
+          "type": "Map",
+          "info": "Coordinates",
+          "required": false
         }
       ],
       "callbacks": [
@@ -202,16 +184,10 @@
           "required": true
         },
         {
-          "name": "latitude",
-          "type": "String",
-          "info": "Latitude coordinate",
-          "required": true
-        },
-        {
-          "name": "longitude",
-          "type": "String",
-          "info": "Longitude coordinate",
-          "required": true
+          "name": "coordinates",
+          "type": "Map",
+          "info": "Coordinates",
+          "required": false
         }
       ],
       "callbacks": [
@@ -242,16 +218,10 @@
           "required": true
         },
         {
-          "name": "latitude",
-          "type": "String",
-          "info": "Latitude coordinate",
-          "required": true
-        },
-        {
-          "name": "longitude",
-          "type": "String",
-          "info": "Longitude coordinate",
-          "required": true
+          "name": "coordinates",
+          "type": "Map",
+          "info": "Coordinates",
+          "required": false
         }
       ],
       "callbacks": [
